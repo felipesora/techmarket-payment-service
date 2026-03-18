@@ -32,6 +32,7 @@ public class PedidoListener {
         System.out.println("Mensagem recebida da fila de pedidos cancelados");
         System.out.println("Conteúdo: " + evento);
 
-
+        pagamentoService.cancelarPagamento(evento.pedidoId());
+        System.out.println("Pagamento cancelado!");
     }
 }
