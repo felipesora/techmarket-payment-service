@@ -2,6 +2,7 @@ package br.com.techmarket_payment_service.mapper;
 
 import br.com.techmarket_payment_service.dto.pagamento.PagamentoCreateDTO;
 import br.com.techmarket_payment_service.dto.pagamento.PagamentoResponseDTO;
+import br.com.techmarket_payment_service.dto.pedido.PedidoCriadoEventDTO;
 import br.com.techmarket_payment_service.model.Pagamento;
 import br.com.techmarket_payment_service.model.enums.StatusPagamento;
 
@@ -32,6 +33,15 @@ public final class PagamentoMapper {
                 pagamento.getMetodoPagamento(),
                 pagamento.getStatusPagamento(),
                 pagamento.getDataCriacao()
+        );
+    }
+
+    public static PagamentoCreateDTO converterEventoParaCreateDTO(PedidoCriadoEventDTO evento) {
+
+        return new PagamentoCreateDTO(
+                evento.pedidoId(),
+                evento.valorTotal(),
+                evento.metodoPagamento()
         );
     }
 }
