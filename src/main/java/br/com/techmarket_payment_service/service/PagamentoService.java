@@ -53,9 +53,9 @@ public class PagamentoService {
     }
 
     @Transactional
-    public PagamentoResponseDTO confirmarPagamento(Long id) {
-        Pagamento pagamentoEntity = pagamentoRepository.findById(id)
-                .orElseThrow(() -> new EntityNotFoundException("Pagamento com id: " + id + " não encontrado"));
+    public PagamentoResponseDTO confirmarPagamento(Long idPedido) {
+        Pagamento pagamentoEntity = pagamentoRepository.findByIdPedido(idPedido)
+                .orElseThrow(() -> new EntityNotFoundException("Pagamento com o IdPedido: " + idPedido + " não encontrado"));
 
         if (pagamentoEntity.getStatusPagamento().name().equals("CANCELADO")) {
             throw new RegraNegocioException("Pagamento já cancelado não pode ter o status alterado");
