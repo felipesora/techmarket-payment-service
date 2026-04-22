@@ -107,7 +107,7 @@ class PagamentoServiceTest {
 
     @Test
     void deveConfirmarPagamentoComSucesso() {
-        when(pagamentoRepository.findById(1L))
+        when(pagamentoRepository.findByIdPedido(1L))
                 .thenReturn(Optional.of(pagamento));
 
         when(pagamentoRepository.save(any()))
@@ -131,7 +131,7 @@ class PagamentoServiceTest {
     void naoDeveConfirmarPagamentoCancelado() {
         pagamento.setStatusPagamento(StatusPagamento.CANCELADO);
 
-        when(pagamentoRepository.findById(1L))
+        when(pagamentoRepository.findByIdPedido(1L))
                 .thenReturn(Optional.of(pagamento));
 
         assertThrows(RegraNegocioException.class, () ->

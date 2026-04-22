@@ -37,9 +37,9 @@ public class PagamentoController {
         return ResponseEntity.ok(pagamento);
     }
 
-    @PatchMapping("/{id}/confirmar")
-    public ResponseEntity<PagamentoResponseDTO> confirmarPagamento(@PathVariable @NotNull Long id) {
-        PagamentoResponseDTO pagamento = pagamentoService.confirmarPagamento(id);
+    @PatchMapping("/{idPedido}/confirmar")
+    public ResponseEntity<PagamentoResponseDTO> confirmarPagamento(@PathVariable @NotNull Long idPedido) {
+        PagamentoResponseDTO pagamento = pagamentoService.confirmarPagamento(idPedido);
         return ResponseEntity.ok(pagamento);
     }
 }
